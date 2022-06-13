@@ -1,13 +1,13 @@
 import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
-export class CreateForgotPassword1650547506581 implements MigrationInterface {
+export class CreateReason1654876672209 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
         
         await queryRunner.createTable(
             new Table({
-                name: "forgot_password",
+                name: "reason",
                 columns: [
                     {
                         name: "id",
@@ -15,7 +15,11 @@ export class CreateForgotPassword1650547506581 implements MigrationInterface {
                         isPrimary: true,
                     },
                     {
-                        name: "user_id",
+                        name: "name",
+                        type: "varchar",
+                    },
+                    {
+                        name: "nature_id",
                         type: "uuid",
                     }
                 ]
@@ -23,11 +27,11 @@ export class CreateForgotPassword1650547506581 implements MigrationInterface {
         )
 
         await queryRunner.createForeignKey(
-            'forgot_password',
+            'reason',
             new TableForeignKey({
-              columnNames: ['user_id'],
+              columnNames: ['nature_id'],
               referencedColumnNames: ['id'],
-              referencedTableName: 'users',
+              referencedTableName: 'nature',
               onDelete: 'SET NULL',
               onUpdate: 'CASCADE',
             }),
@@ -35,7 +39,7 @@ export class CreateForgotPassword1650547506581 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('forgot_password');
+        await queryRunner.dropTable('reason');
     }
 
 }
