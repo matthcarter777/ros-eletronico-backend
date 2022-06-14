@@ -1,4 +1,4 @@
-import { getCustomRepository, SimpleConsoleLogger } from 'typeorm';
+import { getCustomRepository } from 'typeorm';
 import path from 'path';
 
 import { AppError } from '@shared/errors/AppError';

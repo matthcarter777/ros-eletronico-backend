@@ -6,7 +6,7 @@ import ShowLocalService from '@modules/local/services/ShowLocalService';
 import UpdateLocalService from '@modules/local/services/UpdateLocalService';
 import DeleteLocalService from '@modules/local/services/DeleteLocalService';
 
-export default class AdminController {
+export default class LocalController {
 
   async index(_request: Request, response: Response) {
     const indexLocalService = new IndexLocalService();

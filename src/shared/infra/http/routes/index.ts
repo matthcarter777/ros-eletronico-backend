@@ -5,6 +5,7 @@ import userSessionsRouter from '@modules/users/infra/http/routes/sessions.routes
 import rolesSessionsRouter from '@modules/users/infra/http/routes/roles.routes';
 import forgotRouter from '@modules/users/infra/http/routes/forgot.routes';
 import localRouter from "@modules/local/infra/http/routes/local.router";
+import zoneRouter from "@modules/zone/infra/http/routes/zone.routes";
 
 export const router = Router();
 
@@ -17,6 +18,7 @@ router.use('/forgotpassword', forgotRouter);
 /* Admin */
 
 router.use('/admin/local', localRouter);
+router.use('/admin/zone', zoneRouter);
 
 
 /* Bas API */
