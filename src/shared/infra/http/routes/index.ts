@@ -8,6 +8,7 @@ import localRouter from "@modules/local/infra/http/routes/local.router";
 import zoneRouter from "@modules/zone/infra/http/routes/zone.routes";
 import natureRouter from "@modules/nature/infra/http/routes/nature.routes";
 import reasonRouter from "@modules/reason/infra/http/routes/reason.routes";
+import responsibleRouter from "@modules/responsible/infra/http/routes/responsibel.routes";
 
 export const router = Router();
 
@@ -23,6 +24,7 @@ router.use('/admin/local', localRouter);
 router.use('/admin/zone', zoneRouter);
 router.use('/admin/nature', natureRouter);
 router.use('/admin/reason', reasonRouter);
+router.use('/admin/responsible', responsibleRouter);
 
 
 /* Bas API */
