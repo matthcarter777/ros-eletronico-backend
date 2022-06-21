@@ -11,6 +11,7 @@ import reasonRouter from "@modules/reason/infra/http/routes/reason.routes";
 import responsibleRouter from "@modules/responsible/infra/http/routes/responsible.routes";
 import managerRouter from "@modules/manager/infra/http/routes/manager.routes";
 import companyRouter from "@modules/company/infra/http/routes/company.routes";
+import observerRouter from "@modules/observer/infra/http/routes/observer.routes";
 
 export const router = Router();
 
@@ -29,6 +30,7 @@ router.use('/admin/reason', reasonRouter);
 router.use('/admin/responsible', responsibleRouter);
 router.use('/admin/manager', managerRouter);
 router.use('/admin/company', companyRouter);
+router.use('/admin/observer', observerRouter);
 
 
 /* Bas API */
