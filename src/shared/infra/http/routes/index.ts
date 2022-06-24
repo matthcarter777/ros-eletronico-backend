@@ -13,6 +13,7 @@ import managerRouter from "@modules/manager/infra/http/routes/manager.routes";
 import companyRouter from "@modules/company/infra/http/routes/company.routes";
 import observerRouter from "@modules/observer/infra/http/routes/observer.routes";
 import responsibleAreaRouter from "@modules/responsibleArea/infra/http/routes/responsible.routes";
+import shiftRouter from "@modules/shift/infra/http/routes/shift.routes";
 
 export const router = Router();
 
@@ -33,6 +34,7 @@ router.use('/admin/manager', managerRouter);
 router.use('/admin/company', companyRouter);
 router.use('/admin/observer', observerRouter);
 router.use('/admin/responsible-area', responsibleAreaRouter);
+router.use('/admin/shift', shiftRouter);
 
 
 /* Bas API */
