@@ -20,11 +20,11 @@ export const router = Router();
 /* User */
 router.use('/users', usersRouter);
 router.use('/login', userSessionsRouter);
-router.use('/roles', rolesSessionsRouter);
 router.use('/forgotpassword', forgotRouter);
 
 /* Admin */
 
+router.use('/admin/roles', rolesSessionsRouter);
 router.use('/admin/local', localRouter);
 router.use('/admin/zone', zoneRouter);
 router.use('/admin/nature', natureRouter);

@@ -17,7 +17,7 @@ class UserRoleService {
     }
 
     const role = roleRepository.create({
-      name,
+      name
     })
 
     await roleRepository.save(role)
