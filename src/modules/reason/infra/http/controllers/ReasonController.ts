@@ -5,6 +5,7 @@ import IndexReasonService from '@modules/reason/services/IndexReasonService';
 import ShowReasonService from '@modules/reason/services/ShowReasonService';
 import UpdateReasonService from '@modules/reason/services/UpdateReasonService';
 import DeleteReasonService from '@modules/reason/services/DeleteReasonService';
+import ShowReasonByNatureId from '@modules/reason/services/ShowReasonByNatureId';
 
 export default class ReasonController {
 
@@ -12,6 +13,16 @@ export default class ReasonController {
     const reasonService = new IndexReasonService();
 
     const reason = await reasonService.execute();
+
+    return response.status(201).json(reason);
+  }
+
+  async showByNatureId(request: Request, response: Response) {
+    const { id } = request.params;
+
+    const reasonService = new ShowReasonByNatureId();
+
+    const reason = await reasonService.execute(id);
 
     return response.status(201).json(reason);
   }

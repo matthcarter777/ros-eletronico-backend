@@ -34,7 +34,7 @@ class ReasonRepository extends Repository<Reason> {
   }
 
   public async findByNatureId(nature_id: string) {
-    const find = await this.ormRepository.findOne({
+    const find = await this.ormRepository.find({
       where: { nature_id }
     });
 
