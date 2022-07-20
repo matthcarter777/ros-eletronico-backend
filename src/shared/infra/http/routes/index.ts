@@ -14,6 +14,7 @@ import companyRouter from "@modules/company/infra/http/routes/company.routes";
 import observerRouter from "@modules/observer/infra/http/routes/observer.routes";
 import responsibleAreaRouter from "@modules/responsibleArea/infra/http/routes/responsible.routes";
 import shiftRouter from "@modules/shift/infra/http/routes/shift.routes";
+import rosRouter from "@modules/ros/infra/http/routes/ros.router";
 
 export const router = Router();
 
@@ -35,6 +36,8 @@ router.use('/admin/company', companyRouter);
 router.use('/admin/observer', observerRouter);
 router.use('/admin/responsible-area', responsibleAreaRouter);
 router.use('/admin/shift', shiftRouter);
+
+router.use('/ros', rosRouter);
 
 
 /* Bas API */
