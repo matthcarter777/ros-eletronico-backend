@@ -12,7 +12,20 @@ export default class RosController {
       companyArea,
       description,
       suggestion,
-      isAvail } = request.body;
+      isAvail 
+    } = request.body;
+
+      console.log({
+        name,
+        local,
+        zone,
+        nature,
+        reason,
+        companyArea,
+        description,
+        suggestion,
+        isAvail 
+      })
 
     return response.status(201).json({ok: true});
   }
