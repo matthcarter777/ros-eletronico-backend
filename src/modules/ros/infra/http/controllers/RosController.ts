@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 
+import CreateRosService from '@modules/ros/services/CreateRosService';
+
 export default class RosController {
 
   async create(request: Request, response: Response) {
@@ -15,18 +17,21 @@ export default class RosController {
       isAvail 
     } = request.body;
 
-      console.log({
-        name,
-        local,
-        zone,
-        nature,
-        reason,
-        companyArea,
-        description,
-        suggestion,
-        isAvail 
-      })
+    const createRosService = new CreateRosService();
 
-    return response.status(201).json({ok: true});
+    const ros = await createRosService.execute({
+      name,
+      local,
+      zone,
+      nature,
+      reason,
+      companyArea,
+      description,
+      suggestion,
+      isAvail 
+    });
+
+
+    return response.status(201).json(ros);
   }
 }
