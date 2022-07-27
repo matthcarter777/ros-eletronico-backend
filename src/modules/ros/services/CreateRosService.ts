@@ -29,25 +29,28 @@ class CreateRosService {
     isAvail
   }: UserRequest) {
 
-    console.log({
-      name, 
-      local, 
-      zone, 
-      nature,
-      reason,
-      companyArea,
-      description,
-      suggestion,
-      isAvail
-    })
 
     const rosRepository = getCustomRepository(RosRepository);
 
     const ros = rosRepository.create({
-      
-    })
+      date: new Date(),
+      observer_id: name,
+      local_id: local,
+      zone_id: zone,
+      nature_id: nature,
+      reason_id: reason,
+      company_area: companyArea,
+      description,
+      suggestion,
+      isAvail_responsible: Boolean(isAvail),
+      status: 'não resolvido',
+      negotiations: 'não tratado',
+      created_at: new Date(),
+    });
 
-    return;
+    await rosRepository.save(ros);
+
+    return ros;
   }
 
 }

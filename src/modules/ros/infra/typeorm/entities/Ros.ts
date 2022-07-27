@@ -1,21 +1,6 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from 'uuid';
 
-enum Status  {
-  'Resolvido', 
-  'Não resolvido'
-}
-
-enum Negotiations  {
-  'Tratado', 
-  'Não Tratado'
-}
-
-enum CompanyArea  {
-  'Itafos', 
-  'Contratada'
-}
-
 @Entity("ROS")
 class Ros {
   
@@ -65,16 +50,16 @@ class Ros {
   responsible_id: string;
   
   @Column()
-  status: Status;
+  status: string;
   
   @Column()
-  negotiations: Negotiations;
+  negotiations: string;
   
   @Column()
   estimated_date_finish: Date;
   
   @Column()
-  company_area: CompanyArea;
+  company_area: string;
   
   @Column()
   responsible_area_id: string;
