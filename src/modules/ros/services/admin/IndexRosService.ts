@@ -20,7 +20,7 @@ class IndexRosService {
     const natureData = await natureRepository.findAll();
     const reasonData = await reasonRepository.findAll();
 
-    const ros = rosData.map(ros => {
+    return rosData.map(ros => {
       return {
         ...ros,
         zone_name: zoneData.find(zone => zone.id === ros.zone_id).name,
@@ -28,9 +28,7 @@ class IndexRosService {
         nature_name: natureData.find(nature => nature.id === ros.nature_id).name,
         reason_name: reasonData.find(reason => reason.id === ros.reason_id).name,
       }
-    })
-
-    return ros;
+    });
   }
 
 }
