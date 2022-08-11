@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import IndexRosService from '@modules/ros/services/admin/IndexRosService';
+import CreateRosService from '@modules/ros/services/admin/CreateRosService';
 
 export default class AdminRosController {
 
@@ -15,7 +16,7 @@ export default class AdminRosController {
   async create(request: Request, response: Response) {
     const { 
       observer_id, 
-      data, 
+      date, 
       local_id, 
       zone_id, 
       company_area, 
@@ -34,9 +35,11 @@ export default class AdminRosController {
       responsible_area_id
     } = request.body;
 
-    console.log({
+    const createRosService = new CreateRosService();
+
+    await createRosService.execute({
       observer_id, 
-      data, 
+      date, 
       local_id, 
       zone_id, 
       company_area, 
