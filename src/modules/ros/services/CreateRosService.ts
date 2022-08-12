@@ -6,6 +6,7 @@ import RosRepository from '../repositories/RosRepository';
 
 interface UserRequest {
   name?: string;
+  date: Date;
   local: string;
   zone: string;
   nature: string;
@@ -18,7 +19,8 @@ interface UserRequest {
 
 class CreateRosService {
   async execute({ 
-    name, 
+    name,
+    date, 
     local, 
     zone, 
     nature,
@@ -28,12 +30,12 @@ class CreateRosService {
     suggestion,
     isAvail
   }: UserRequest) {
-
+    console.log(date);
 
     const rosRepository = getCustomRepository(RosRepository);
 
     const ros = rosRepository.create({
-      date: new Date(),
+      date: new Date(date),
       observer_id: name,
       local_id: local,
       zone_id: zone,

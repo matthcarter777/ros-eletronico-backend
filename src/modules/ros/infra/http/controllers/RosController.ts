@@ -7,6 +7,7 @@ export default class RosController {
   async create(request: Request, response: Response) {
     const {       
       name,
+      date,
       local,
       zone,
       nature,
@@ -21,6 +22,7 @@ export default class RosController {
 
     const ros = await createRosService.execute({
       name,
+      date,
       local,
       zone,
       nature,
