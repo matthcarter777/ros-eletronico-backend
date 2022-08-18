@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import IndexRosService from '@modules/ros/services/admin/IndexRosService';
+import ShowRosService from '@modules/ros/services/admin/ShowRosService';
 import CreateRosService from '@modules/ros/services/admin/CreateRosService';
 
 export default class AdminRosController {
@@ -60,4 +61,16 @@ export default class AdminRosController {
 
     return response.status(200).send({ok: true});
   }
+
+  async show(request: Request, response: Response) {
+    const { id } = request.params;
+
+    const showRosService = new ShowRosService();
+    
+    const ros = await showRosService.execute(id);
+
+    response.status(200).send(ros);
+  }
+
+
 }
