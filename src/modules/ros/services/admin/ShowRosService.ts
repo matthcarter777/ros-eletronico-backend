@@ -33,14 +33,19 @@ class ShowRosService {
     const natureData = await natureRepository.findAll();
     const reasonData = await reasonRepository.findAll();
 
-    const observerData   = await observerRepository.findAll();
 
+    
     const companyData = await companyRepository.findAll();
     const managerData = await managerRepository.findAll();
     const shiftData   = await shiftRepository.findAll();
     const responsibleData     = await responsibleRepository.findAll();
     const responsibleAreaData = await responsibleAreaRepository.findAll();
-
+    
+    let observerData = [];
+    
+    if (rosData.observer_id) {
+      observerData  = await observerRepository.findAll();
+    }
 
     return {
       ...rosData,
