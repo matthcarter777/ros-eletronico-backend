@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import IndexRosService from '@modules/ros/services/admin/IndexRosService';
 import ShowRosService from '@modules/ros/services/admin/ShowRosService';
 import CreateRosService from '@modules/ros/services/admin/CreateRosService';
+import UpdateRosService from '@modules/ros/services/admin/UpdateRosService';
 
 export default class AdminRosController {
 
@@ -83,7 +84,9 @@ export default class AdminRosController {
       estimated_date_finish
     } = request.body;
 
-    console.log({
+    const updateRosService = new UpdateRosService();
+
+    await updateRosService.execute({
       id,
       company_id, 
       manager_id, 
@@ -91,9 +94,9 @@ export default class AdminRosController {
       responsible_area_id, 
       shift_id, 
       estimated_date_finish
-    })
+     });
 
-    return response.status(200).send({message: 'Updated'})
+    return response.status(200).send({message: 'Ros Updated'})
   }
 
 }
