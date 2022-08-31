@@ -72,5 +72,28 @@ export default class AdminRosController {
     response.status(200).send(ros);
   }
 
+  async update(request: Request, response: Response) {
+    const { id } = request.params;
+    const { 
+      company_id, 
+      manager_id, 
+      responsible_id, 
+      responsible_area_id, 
+      shift_id, 
+      estimated_date_finish
+    } = request.body;
+
+    console.log({
+      id,
+      company_id, 
+      manager_id, 
+      responsible_id, 
+      responsible_area_id, 
+      shift_id, 
+      estimated_date_finish
+    })
+
+    return response.status(200).send({message: 'Updated'})
+  }
 
 }
