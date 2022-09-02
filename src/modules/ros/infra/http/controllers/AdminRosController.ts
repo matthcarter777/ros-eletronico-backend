@@ -99,4 +99,19 @@ export default class AdminRosController {
     return response.status(200).send({message: 'Ros Updated'})
   }
 
+  async processRos(request: Request, response: Response) {
+    const { id } = request.params;
+
+    console.log(id);
+
+    return response.status(200).send({message: 'Ok'})
+  }
+
+  async finishRos(request: Request, response: Response) {
+    const { id } = request.params;
+
+    console.log(id);
+
+    return response.status(200).send({message: 'Ok'})
+  }
 }
