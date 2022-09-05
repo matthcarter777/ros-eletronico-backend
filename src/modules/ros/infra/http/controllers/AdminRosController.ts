@@ -5,6 +5,7 @@ import ShowRosService from '@modules/ros/services/admin/ShowRosService';
 import CreateRosService from '@modules/ros/services/admin/CreateRosService';
 import UpdateRosService from '@modules/ros/services/admin/UpdateRosService';
 import ProcessRosService from '@modules/ros/services/admin/ProcessRosService';
+import FinishRosService from '@modules/ros/services/admin/FinishRosService';
 
 export default class AdminRosController {
 
@@ -107,12 +108,16 @@ export default class AdminRosController {
 
     await processRosService.execute({id});
 
-    return response.status(200).send({message: 'Ok'})
+    return response.status(200).send({message: 'ROS Tratado'})
   }
 
   async finishRos(request: Request, response: Response) {
     const { id } = request.params;
 
-    return response.status(200).send()
+    const finishRosService = new FinishRosService();
+
+    await finishRosService.execute({id});
+
+    return response.status(200).send({message: 'ROS Finalizado'});
   }
 }

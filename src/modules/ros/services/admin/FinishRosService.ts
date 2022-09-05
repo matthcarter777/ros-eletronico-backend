@@ -7,7 +7,7 @@ interface ROSProps  {
   id: string;
 }
 
-class ProcessRosService {
+class FinishRosService {
   async execute({
     id
   }: ROSProps) {
@@ -20,10 +20,15 @@ class ProcessRosService {
       throw new AppError("O ROS precisa ser atendido antes desta alteração");
     }
 
-    ros.negotiations = "Tratado";
+    if (ros.negotiations !== 'Tratado') {
+      throw new AppError("O ROS precisa ser tratado antes da finalização");
+    }
+
+    ros.status = "Resolvido";
+    ros.finish_at = new Date();
 
     await rosRepository.save(ros);
   } 
 }
 
-export default ProcessRosService;
+export default FinishRosService;
