@@ -47,7 +47,6 @@ class IndexRosService {
 
     const rosRepository = getCustomRepository(RosRepository);
 
-    
     const ros  = rosRepository.create({
       observer_id, 
       date, 

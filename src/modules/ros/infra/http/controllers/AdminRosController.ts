@@ -4,6 +4,7 @@ import IndexRosService from '@modules/ros/services/admin/IndexRosService';
 import ShowRosService from '@modules/ros/services/admin/ShowRosService';
 import CreateRosService from '@modules/ros/services/admin/CreateRosService';
 import UpdateRosService from '@modules/ros/services/admin/UpdateRosService';
+import ProcessRosService from '@modules/ros/services/admin/ProcessRosService';
 
 export default class AdminRosController {
 
@@ -102,7 +103,9 @@ export default class AdminRosController {
   async processRos(request: Request, response: Response) {
     const { id } = request.params;
 
-    console.log(id);
+    const processRosService = new ProcessRosService();
+
+    await processRosService.execute({id});
 
     return response.status(200).send({message: 'Ok'})
   }
@@ -110,8 +113,6 @@ export default class AdminRosController {
   async finishRos(request: Request, response: Response) {
     const { id } = request.params;
 
-    console.log(id);
-
-    return response.status(200).send({message: 'Ok'})
+    return response.status(200).send()
   }
 }
