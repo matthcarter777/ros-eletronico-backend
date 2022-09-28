@@ -1,7 +1,11 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from 'uuid';
 
-@Entity("ROS")
+@Entity("ROS", {
+  orderBy: { 
+    created_at: 'DESC'
+   }
+})
 class Ros {
   
   @PrimaryColumn()
