@@ -9,7 +9,7 @@ import ObserverRepository from '@modules/observer/repositories/ObserverRepositor
 import CompanyRepository from '@modules/company/repositories/CompanyRepository';
 import ManagerRepository from '@modules/manager/repositories/ManagerRepository';
 import ShiftRepository from '@modules/shift/repositories/ShiftRepository';
-import ResponsibleRepository from '@modules/responsible/repositories/ResponsibleRepository';
+import UserRepository from '@modules/users/repositories/UserRepository';
 import ResponsibleAreaRepository from '@modules/responsibleArea/repositories/ResponsibleAreaRepository';
 
 class ShowRosService {
@@ -23,7 +23,7 @@ class ShowRosService {
     const companyRepository = getCustomRepository(CompanyRepository);
     const managerRepository = getCustomRepository(ManagerRepository);
     const shiftRepository = getCustomRepository(ShiftRepository);
-    const responsibleRepository = getCustomRepository(ResponsibleRepository);
+    const userRepository = getCustomRepository(UserRepository);
     const responsibleAreaRepository = getCustomRepository(ResponsibleAreaRepository);
 
 
@@ -38,7 +38,7 @@ class ShowRosService {
     const companyData = await companyRepository.findAll();
     const managerData = await managerRepository.findAll();
     const shiftData   = await shiftRepository.findAll();
-    const responsibleData     = await responsibleRepository.findAll();
+    const usersData     = await userRepository.findAll();
     const responsibleAreaData = await responsibleAreaRepository.findAll();
     
     let observerData = [];
@@ -62,7 +62,7 @@ class ShowRosService {
       shift_name: rosData.shift_id ?
         shiftData.find(shift => shift.id === rosData.shift_id).name : '',
       responsible_name: rosData.responsible_id ? 
-        responsibleData.find(responsible => responsible.id === rosData.responsible_id).name : '',
+        usersData.find(responsible => responsible.id === rosData.responsible_id).name : '',
       responsible_area_name: rosData.responsible_area_id ?
         responsibleAreaData.find(responsibleArea => responsibleArea.id === rosData.responsible_area_id).name : '',
     };

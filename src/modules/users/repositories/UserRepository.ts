@@ -10,6 +10,12 @@ class UserRepository extends Repository<User> {
     super();
     this.ormRepository = getRepository(User);
   }
+
+  public async findAll() {
+    const find = await this.ormRepository.find()
+
+    return find || undefined;
+  }
   
   public async findById(id: string) {
     const find = await this.ormRepository.findOne({
