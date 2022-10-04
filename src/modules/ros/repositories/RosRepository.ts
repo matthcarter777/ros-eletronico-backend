@@ -24,6 +24,14 @@ class RosRepository extends Repository<Ros> {
 
     return find || undefined;
   }
+
+  public async findByResponsibleId(id: string) {
+    const find = await this.ormRepository.find({
+      where: { responsible_id: id}
+    });
+
+    return find || undefined;
+  }
 }
 
 export default RosRepository; 
