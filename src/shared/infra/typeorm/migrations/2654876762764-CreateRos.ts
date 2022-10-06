@@ -85,6 +85,11 @@ export class CreateRos2654876762764 implements MigrationInterface {
                         isNullable: true,
                     },
                     {
+                        name: "responsible_area_id",
+                        type: "uuid",
+                        isNullable: true,
+                    },
+                    {
                         name: "status",
                         type: "varchar",
                         isNullable: true,
@@ -211,7 +216,18 @@ export class CreateRos2654876762764 implements MigrationInterface {
             new TableForeignKey({
                 columnNames: ['responsible_id'],
                 referencedColumnNames: ['id'],
-                referencedTableName: 'responsible',
+                referencedTableName: 'users',
+                onDelete: 'SET NULL',
+                onUpdate: 'CASCADE',
+            }),
+        );
+
+        await queryRunner.createForeignKey(
+            'ROS',
+            new TableForeignKey({
+                columnNames: ['responsible_area_id'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'responsible-area',
                 onDelete: 'SET NULL',
                 onUpdate: 'CASCADE',
             }),
