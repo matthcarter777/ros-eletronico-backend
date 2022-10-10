@@ -1,17 +1,18 @@
 import { Request, Response } from 'express';
 
 import CreateCommentService from '@modules/ros/services/Comment/CreateCommentService';
+import IndexCommentService from '@modules/ros/services/Comment/IndexCommentService';
 
 export default class CommentsController {
 
   async index(request: Request, response: Response) {
-    const {  } = request.params;
+    const { id } = request.params;
 
-/*     const indexRosService = new IndexRosService();
+    const indexCommentService = new IndexCommentService();
     
-    const ros = await indexRosService.execute(id); */
+    const comments = await indexCommentService.execute(id);
 
-    response.status(200).send({ok: true});
+    response.status(200).send(comments);
   }
 
   async create(request: Request, response: Response) {
