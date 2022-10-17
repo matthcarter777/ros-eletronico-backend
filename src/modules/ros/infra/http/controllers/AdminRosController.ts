@@ -6,6 +6,7 @@ import CreateRosService from '@modules/ros/services/admin/CreateRosService';
 import UpdateRosService from '@modules/ros/services/admin/UpdateRosService';
 import ProcessRosService from '@modules/ros/services/admin/ProcessRosService';
 import FinishRosService from '@modules/ros/services/admin/FinishRosService';
+import GoToExcelRosService from '@modules/ros/services/admin/GoToExcelRosService';
 
 export default class AdminRosController {
 
@@ -119,5 +120,15 @@ export default class AdminRosController {
     await finishRosService.execute({id});
 
     return response.status(200).send({message: 'ROS Finalizado'});
+  }
+
+  async goToExcel(request: Request, response: Response) {
+    const { id } = request.params;
+
+    const goToExcelRosService = new GoToExcelRosService();
+
+    await goToExcelRosService.execute();
+
+    return response.status(200).send();
   }
 }

@@ -6,7 +6,7 @@ import ShowRosService from '@modules/ros/services/admin/ShowRosService';
 export default class RosResponsibleController {
 
   async index(request: Request, response: Response) {
-    const { id } = request.params;
+    const { id }  = request.user;
 
     const indexRosService = new IndexRosService();
     
