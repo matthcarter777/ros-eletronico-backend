@@ -8,12 +8,12 @@ const adminRosController = new AdminRosController();
 
 const router = Router();
 
-router.get('/', isAdminUser, ensureAuthenticated, adminRosController.index);
-router.post('/', isAdminUser, ensureAuthenticated, adminRosController.create);
-router.get('/:id', isAdminUser, ensureAuthenticated, adminRosController.show);
-router.put('/:id', isAdminUser, ensureAuthenticated, adminRosController.update);
-router.put('/process/:id', isAdminUser, ensureAuthenticated, adminRosController.processRos);
-router.put('/finish/:id', isAdminUser, ensureAuthenticated, adminRosController.finishRos);
-router.get('/gotoexcel/:id', isAdminUser, ensureAuthenticated, adminRosController.goToExcel);
+router.get('/',  ensureAuthenticated, isAdminUser, adminRosController.index);
+router.post('/', ensureAuthenticated, isAdminUser, adminRosController.create);
+router.get('/:id', ensureAuthenticated, isAdminUser, adminRosController.show);
+router.put('/:id', ensureAuthenticated, isAdminUser, adminRosController.update);
+router.put('/process/:id', ensureAuthenticated, isAdminUser, adminRosController.processRos);
+router.put('/finish/:id', ensureAuthenticated, isAdminUser, adminRosController.finishRos);
+router.get('/gotoexcel/:id', ensureAuthenticated, isAdminUser, adminRosController.goToExcel);
 
 export default router;

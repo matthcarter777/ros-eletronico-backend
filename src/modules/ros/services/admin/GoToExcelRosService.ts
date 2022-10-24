@@ -14,14 +14,71 @@ class GotoExcelRosService {
     const rosToExcel = wb.addWorksheet("ROS");
 
     const data = [ 
-      {name: 'Abel', email: 'teste@gmail.com', cellphone: '65999010913'},
-      {name: 'Marcos', email: 'marcos@gmail.com', cellphone: '65999010913'}
+      {
+        name: 'Abel', 
+        email: 'teste@gmail.com', 
+        cellphone: '65999010913', 
+        name1: 'Abel', 
+        name11: 'Abel',
+        name12: 'Abel',
+        name13: 'Abel',
+        name14: 'Abel',
+        name15: 'Abel',
+        name16: 'Abel',
+        name17: 'Abel',
+        name18: 'Abel',
+        name19: 'Abel',
+        name20: 'Abel',
+      },
+      {
+        name: 'Abel', 
+        email: 'teste@gmail.com', 
+        cellphone: '65999010913', 
+        name1: 'Abel', 
+        name11: 'Abel',
+        name12: 'Abel',
+        name13: 'Abel',
+        name14: 'Abel',
+        name15: 'Abel',
+        name16: 'Abel',
+        name17: 'Abel',
+        name18: 'Abel',
+        name19: 'Abel',
+        name20: 'Abel',
+      },
+      {
+        name: 'Abel', 
+        email: 'teste@gmail.com', 
+        cellphone: '65999010913', 
+        name1: 'Abel', 
+        name11: 'Abel',
+        name12: 'Abel',
+        name13: 'Abel',
+        name14: 'Abel',
+        name15: 'Abel',
+        name16: 'Abel',
+        name17: 'Abel',
+        name18: 'Abel',
+        name19: 'Abel',
+        name20: 'Abel',
+      },
     ]
 
     const headingsColumnNames = [
-      "name",
-      "email",
-      "celular"
+      "DATA",
+      "OBSERVADOR",
+      "GESTOR",
+      "ÁREA",
+      "LOCAL",
+      "NATUREZA",
+      "OPCAO",
+      "DESCRIÇÃO",
+      "AÇÃO DE BLOQUEIO/ PROPOSTAS/ SUGESTOES",
+      "Parecer do Respónsável pela ação",
+      "TRATATIVAS",
+      "STATUS",
+      "AREA RESPONSAVEL",
+      "RESPONSAVEL",
     ];
 
     let  headingsColumnIndex = 1;
