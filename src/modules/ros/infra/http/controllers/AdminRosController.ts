@@ -122,9 +122,7 @@ export default class AdminRosController {
     return response.status(200).send({message: 'ROS Finalizado'});
   }
 
-  async goToExcel(request: Request, response: Response) {
-    const { id } = request.params;
-
+  async goToExcel(_request: Request, response: Response) {
     const goToExcelRosService = new GoToExcelRosService();
 
     await goToExcelRosService.execute();
