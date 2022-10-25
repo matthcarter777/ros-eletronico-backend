@@ -11,9 +11,6 @@ import LocalRepository from '@modules/local/repositories/LocalRepository';
 import NatureRepository from '@modules/nature/repositories/NatureRepository';
 import ReasonRepository from '@modules/reason/repositories/ReasonRepository';
 import ObserverRepository from '@modules/observer/repositories/ObserverRepository';
-import CompanyRepository from '@modules/company/repositories/CompanyRepository';
-import ManagerRepository from '@modules/manager/repositories/ManagerRepository';
-import ShiftRepository from '@modules/shift/repositories/ShiftRepository';
 import UserRepository from '@modules/users/repositories/UserRepository';
 import ResponsibleAreaRepository from '@modules/responsibleArea/repositories/ResponsibleAreaRepository';
 
@@ -27,9 +24,6 @@ class GotoExcelRosService {
     const natureRepository = getCustomRepository(NatureRepository);
     const reasonRepository = getCustomRepository(ReasonRepository);
     const observerRepository = getCustomRepository(ObserverRepository);
-    const companyRepository = getCustomRepository(CompanyRepository);
-    const managerRepository = getCustomRepository(ManagerRepository);
-    const shiftRepository = getCustomRepository(ShiftRepository);
     const userRepository = getCustomRepository(UserRepository);
     const responsibleAreaRepository = getCustomRepository(ResponsibleAreaRepository);
 
@@ -42,9 +36,6 @@ class GotoExcelRosService {
     const natureData = await natureRepository.findAll();
     const reasonData = await reasonRepository.findAll();
     const observerData = await observerRepository.findAll();
-    const companyData = await companyRepository.findAll();
-    const managerData = await managerRepository.findAll();
-    const shiftData   = await shiftRepository.findAll();
     const usersData     = await userRepository.findAll();
     const responsibleAreaData = await responsibleAreaRepository.findAll();
 

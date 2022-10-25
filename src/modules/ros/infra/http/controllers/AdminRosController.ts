@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import path from 'path';
 
 import IndexRosService from '@modules/ros/services/admin/IndexRosService';
 import ShowRosService from '@modules/ros/services/admin/ShowRosService';
@@ -127,6 +128,8 @@ export default class AdminRosController {
 
     await goToExcelRosService.execute();
 
-    return response.status(200).send();
+    const archive = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'ros.xlsx');
+
+    return response.status(200).download(archive);
   }
 }
