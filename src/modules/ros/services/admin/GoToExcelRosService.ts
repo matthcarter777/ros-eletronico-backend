@@ -2,6 +2,7 @@ import xl from 'excel4node';
 import { getCustomRepository } from 'typeorm';
 import { format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import path from 'path';
 
 import { AppError } from '@shared/errors/AppError';
 
@@ -92,7 +93,9 @@ class GotoExcelRosService {
       rowIndex++;
     });
 
-    wb.write(`ros.xlsx`);
+    const pathArchive = path.join(__dirname, '..', '..', '..', '..', '..', 'report');
+
+    wb.write(`${pathArchive}/ros.xlsx`);
   } 
 }
 
