@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import path from 'path';
 
 import IndexRosService from '@modules/ros/services/admin/IndexRosService';
 import ShowRosService from '@modules/ros/services/admin/ShowRosService';
@@ -122,13 +123,13 @@ export default class AdminRosController {
     return response.status(200).send({message: 'ROS Finalizado'});
   }
 
-  async goToExcel(request: Request, response: Response) {
-    const { id } = request.params;
-
+  async goToExcel(_request: Request, response: Response) {
     const goToExcelRosService = new GoToExcelRosService();
 
     await goToExcelRosService.execute();
 
-    return response.status(200).send();
+    const archive = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'ros.xlsx');
+
+    return response.status(200).download(archive);
   }
 }
