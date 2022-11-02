@@ -1,8 +1,8 @@
 import { getCustomRepository } from 'typeorm';
 
 import { AppError } from '@shared/errors/AppError';
-
 import RosRepository from '../repositories/RosRepository';
+import { notificationAdminsByEmail } from '@shared/functions/notificationAdminsByEmail';
 
 interface UserRequest {
   name?: string;
@@ -32,7 +32,9 @@ class CreateRosService {
   }: UserRequest) {
     const rosRepository = getCustomRepository(RosRepository);
 
-    let ros = {};
+    let ros = {
+      id: ''
+    };
 
     if (name === "") {
       ros = rosRepository.create({
@@ -50,7 +52,9 @@ class CreateRosService {
         created_at: new Date(),
       });
 
-      await rosRepository.save(ros); 
+      await rosRepository.save(ros);
+      
+      await notificationAdminsByEmail(ros.id);
 
       return ros;
     }
@@ -71,8 +75,10 @@ class CreateRosService {
         negotiations: 'não tratado',
         created_at: new Date(),
       });
-  
-      await rosRepository.save(ros); 
+      
+      await rosRepository.save(ros);
+            
+      await notificationAdminsByEmail(ros.id);
   
       return ros;
     }
