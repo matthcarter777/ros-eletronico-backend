@@ -3,6 +3,8 @@ import { getCustomRepository } from 'typeorm';
 import { format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import path from 'path';
+import fs from 'fs';
+import { v4 as uuidv4 } from 'uuid';
 
 import { AppError } from '@shared/errors/AppError';
 
@@ -18,7 +20,8 @@ import ResponsibleAreaRepository from '@modules/responsibleArea/repositories/Res
 
 class GotoExcelRosService {
   async execute() {
-
+    const pathArchive = path.join(__dirname, '..', '..', '..', '..', '..', 'report');
+    
     const rosRepository = getCustomRepository(RosRepository);
     const zoneRepository = getCustomRepository(ZoneRepository);
     const localRepository = getCustomRepository(LocalRepository);
@@ -40,24 +43,24 @@ class GotoExcelRosService {
     const usersData     = await userRepository.findAll();
     const responsibleAreaData = await responsibleAreaRepository.findAll();
 
-    const data = rosData.map(ros => {
+    const data = rosData.map( ros => {
       return {
         data: format(new Date(ros?.date), "dd-MM-yyyy HH:mm", { locale: pt }),
         month: format(new Date(ros?.date), "MMM", { locale: pt }),
         year: format(new Date(ros?.date), "yyyy", { locale: pt }),
-        observer: observerData 
+        observer: ros.observer_id  === null
         ? 'Anônimo'
         : observerData.find(observer => observer.id === ros.observer_id).name,
-        area_name: "zoneData.find(zone => zone.id === ros.zone_id).name",
-        local_name: "localData.find(local => local.id === ros.local_id).name",
-        nature_name: "natureData.find(nature => nature.id === ros.nature_id).name",
-        reason_name: "reasonData.find(reason => reason.id === ros.reason_id).name",
+        area_name: ros.zone_id !== null ? zoneData.find(zone => zone.id === ros.zone_id).name : '',
+        local_name: ros.local_id !== null ? localData.find(local => local.id === ros.local_id).name : '',
+        nature_name: ros.nature_id !== null ? natureData.find(nature => nature.id === ros.nature_id).name : '',
+        reason_name: ros.reason_id !== null ? reasonData.find(reason => reason.id === ros.reason_id).name : '',
         description: ros.description,
         suggestion: ros.suggestion,
         negotions: ros.negotiations,
         status: ros.status,
-        responsible_area: "responsibleAreaData.find(responsible => responsible.id === ros.responsible_area_id).name",
-        responsible: "usersData.find(responsible => responsible.id === ros.responsible_id).name"
+        responsible_area: ros.responsible_area_id !== null ? responsibleAreaData.find(responsible => responsible.id === ros.responsible_area_id).name : '',
+        responsible: ros.responsible_id !== null ? usersData.find(responsible => responsible.id === ros.responsible_id).name : ''
       }
     });
 
@@ -93,9 +96,11 @@ class GotoExcelRosService {
       rowIndex++;
     });
 
-    const pathArchive = path.join(__dirname, '..', '..', '..', '..', '..', 'report');
+    const nameArchive = `${uuidv4()}.xlsx`;
 
     wb.write(`${pathArchive}\\ros.xlsx`);
+
+    return `${pathArchive}\\ros.xlsx`;
   } 
 }
 
