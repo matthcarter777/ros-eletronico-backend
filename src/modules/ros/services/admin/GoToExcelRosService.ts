@@ -48,16 +48,16 @@ class GotoExcelRosService {
         observer: observerData 
         ? 'Anônimo'
         : observerData.find(observer => observer.id === ros.observer_id).name,
-        area_name: zoneData.find(zone => zone.id === ros.zone_id).name,
-        local_name: localData.find(local => local.id === ros.local_id).name,
-        nature_name: natureData.find(nature => nature.id === ros.nature_id).name,
-        reason_name: reasonData.find(reason => reason.id === ros.reason_id).name,
+        area_name: "zoneData.find(zone => zone.id === ros.zone_id).name",
+        local_name: "localData.find(local => local.id === ros.local_id).name",
+        nature_name: "natureData.find(nature => nature.id === ros.nature_id).name",
+        reason_name: "reasonData.find(reason => reason.id === ros.reason_id).name",
         description: ros.description,
         suggestion: ros.suggestion,
         negotions: ros.negotiations,
         status: ros.status,
-        responsible_area: responsibleAreaData.find(responsible => responsible.id === ros.responsible_area_id).name,
-        responsible: usersData.find(responsible => responsible.id === ros.responsible_id).name
+        responsible_area: "responsibleAreaData.find(responsible => responsible.id === ros.responsible_area_id).name",
+        responsible: "usersData.find(responsible => responsible.id === ros.responsible_id).name"
       }
     });
 
@@ -95,7 +95,7 @@ class GotoExcelRosService {
 
     const pathArchive = path.join(__dirname, '..', '..', '..', '..', '..', 'report');
 
-    wb.write(`${pathArchive}/ros.xlsx`);
+    wb.write(`${pathArchive}\\ros.xlsx`);
   } 
 }
 

@@ -128,7 +128,7 @@ export default class AdminRosController {
 
     await goToExcelRosService.execute();
 
-    const archive = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'ros.xlsx');
+    const archive = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'report', 'ros.xlsx');
 
     return response.status(200).download(archive);
   }
