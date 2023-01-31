@@ -99,7 +99,7 @@ class GotoExcelRosService {
     const nameArchive = `${uuidv4()}.xlsx`;
 
     wb.write(`${pathArchive}\\ros.xlsx`);
-
+    
     return `${pathArchive}\\ros.xlsx`;
   } 
 }

@@ -126,9 +126,8 @@ export default class AdminRosController {
   async goToExcel(_request: Request, response: Response) {
     const goToExcelRosService = new GoToExcelRosService();
 
-    const archive = await goToExcelRosService.execute();
-    console.log(archive)
+    const responseData = await goToExcelRosService.execute();
 
-    return response.status(200).download(archive);
+    return response.status(200).download(responseData);
   }
 }
